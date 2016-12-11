@@ -11,7 +11,11 @@
 #
 
 class User < ApplicationRecord
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true
 
   has_many :messages
+
+  def babble
+    Message.create!(text: 'Hi there', user_id: self.id)
+  end
 end

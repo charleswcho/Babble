@@ -25,7 +25,7 @@ censoredWords = {}
 
 i = 0
 
-while i < 10
+while i < 20
   currWord = ('a'..'z').to_a.shuffle[0,8].join
 
   if censoredWords[currWord]
@@ -36,8 +36,27 @@ while i < 10
   end
 end
 
+# censoredWords['Hi'] = true
+
 print censoredWords
 
-user = User.create!(name: 'Charles', color: 'red', profile_pic: 'profile pic')
+1.times do |i|
+  name = Faker::Name.first_name
+  color = Faker::Color.color_name
+  profile_pic = Faker::Avatar.image
 
-Message.create!(text: 'Hi there', user_id: user.id)
+  user = User.create!(name: name, color: color, profile_pic: profile_pic)
+  user.babble
+end
+
+
+
+# msg = Message.create!(text: 'Hi there', user_id: user.id)
+#
+# msg.text.split.each do |word|
+#     if censoredWords[word]
+#       msg.update_attribute(:text, '<message deleted>')
+#     end
+# end
+#
+# print msg.text
