@@ -2,8 +2,7 @@
 <p>Find me in app/views/message/index.html.erb</p>
 
 <% @messages.each do |message| %>
-  <tr>
-    <td><%= message.user.name %></td>
-    <td><%= message.text %></td>
-  </tr>
+  <ul>
+    <li><%= message.user.name + ' : ' + message.text %></li>
+  </ul>
 <% end %>

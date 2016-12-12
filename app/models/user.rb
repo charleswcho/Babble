@@ -15,7 +15,26 @@ class User < ApplicationRecord
 
   has_many :messages
 
+  def self.talk
+    byebug
+    Rails.logger.info 'BLAH BLAH'
+  end
+
+  def self.createRandUser
+    name = Faker::Name.first_name
+    color = Faker::Color.color_name
+    profile_pic = Faker::Avatar.image
+
+    User.create!(name: name, color: color, profile_pic: profile_pic)
+  end
+
   def babble
     Message.create!(text: 'Hi there', user_id: self.id)
+  end
+
+  private
+
+  def rand_word
+    ('a'..'z').to_a.shuffle[0,8].join
   end
 end
