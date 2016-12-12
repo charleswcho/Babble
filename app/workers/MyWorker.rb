@@ -7,6 +7,8 @@ class MyWorker
   def perform
     User.all.each do |user|
       user.babble
+
+      # Can optimize by storing index of last message that was censored using the current user.messages.length
       user.messages.each do |message|
         message.censor(Censored.instance.censoredWords)
       end

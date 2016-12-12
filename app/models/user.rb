@@ -15,11 +15,6 @@ class User < ApplicationRecord
 
   has_many :messages
 
-  def self.talk
-    byebug
-    Rails.logger.info 'BLAH BLAH'
-  end
-
   def self.createRandUser
     name = Faker::Name.first_name
     color = Faker::Color.color_name
@@ -29,7 +24,7 @@ class User < ApplicationRecord
   end
 
   def babble
-    Message.create!(text: 'Hi there', user_id: self.id)
+    Message.create!(text: rand_word, user_id: self.id)
   end
 
   private

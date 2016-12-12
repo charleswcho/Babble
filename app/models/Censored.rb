@@ -16,6 +16,7 @@ class Censored
     while i < 20
       currWord = ('a'..'z').to_a.shuffle[0,8].join
 
+      # Enforce uniqueness
       if @censoredWords[currWord]
         next
       else
@@ -23,7 +24,5 @@ class Censored
         i += 1
       end
     end
-
-    @censoredWords['Hi'] = true
   end
 end

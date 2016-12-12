@@ -24,8 +24,5 @@ require 'byebug'
 1.times do |i|
   user = User.createRandUser
 
-  user.messages.each do |message|
-     message.censor(Censored.instance.censoredWords)
-  end
   puts Censored.instance.censoredWords
 end
