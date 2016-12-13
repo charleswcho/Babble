@@ -1,6 +1,6 @@
 redis: &redis
   adapter: redis
-  url: redis://localhost:6379/1
+  url: redis://redistogo:466bdb46927e8c0ba51c640a22a21a8f@sculpin.redistogo.com:9667/
 
 production: *redis
 development: *redis
