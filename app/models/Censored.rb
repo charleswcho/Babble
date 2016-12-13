@@ -24,5 +24,7 @@ class Censored
         i += 1
       end
     end
+
+    @censoredWords['Hi'] = true
   end
 end

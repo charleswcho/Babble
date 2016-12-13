@@ -24,13 +24,12 @@ class User < ApplicationRecord
   end
 
   def babble
-    currWord = rand_word
+    currWord = 'Hi there' # rand_word
     Message.create!(text: currWord, user_id: self.id)
 
     ActionCable.server.broadcast 'messages',
       message: currWord,
       user: self.name
-    head :ok
   end
 
   private

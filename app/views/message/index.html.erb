@@ -1,8 +1,9 @@
 <h1>Message#index</h1>
 <p>Find me in app/views/message/index.html.erb</p>
-
-<% @messages.each do |message| %>
-  <ul id="messages">
-    <li><%= message.user.name + ' : ' + message.text %></li>
-  </ul>
-<% end %>
+<div id="messages">
+  <% @messages.each do |message| %>
+    <ul>
+      <li><%= message.user.name + ' : ' + message.text %></li>
+    </ul>
+  <% end %>
+</div>

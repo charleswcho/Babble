@@ -25,4 +25,5 @@ require 'byebug'
   user = User.createRandUser
 
   puts Censored.instance.censoredWords
+  puts Censored.instance.censoredWords.to_a.length
 end
