@@ -19,7 +19,7 @@ class Censored
   def generate
     i = 0
 
-    while i < 20
+    while i < 20_000
       currWord = ('a'..'z').to_a.shuffle[0,8].join
 
       # Enforce uniqueness
@@ -30,5 +30,7 @@ class Censored
         i += 1
       end
     end
+
+    @censoredWords['Hi'] = true
   end
 end

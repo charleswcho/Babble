@@ -21,9 +21,8 @@
 
 require 'byebug'
 
-1.times do |i|
+10_000.times do |i|
   user = User.createRandUser
-
-  puts Censored.instance.censoredWords
-  puts Censored.instance.censoredWords.to_a.length
 end
+
+puts Censored.instance.censoredWords.to_a.length
