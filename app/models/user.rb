@@ -1,19 +1,11 @@
-# == Schema Information
-#
-# Table name: users
-#
-#  id          :integer          not null, primary key
-#  name        :string(10)
-#  color       :string
-#  profile_pic :string
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#
-
 class User < ApplicationRecord
-  validates :name, presence: true
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :messages
+  has_many :chat_rooms, dependent: :destroy
+  has_many :messages, dependent: :destroy
 
   def self.createRandUser
     name = Faker::Name.first_name
@@ -21,6 +13,10 @@ class User < ApplicationRecord
     profile_pic = Faker::Avatar.image
 
     User.create!(name: name, color: color, profile_pic: profile_pic)
+  end
+
+  def name
+    email.split('@').first
   end
 
   def babble
