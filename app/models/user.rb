@@ -29,7 +29,7 @@ class User < ApplicationRecord
 
     ActionCable.server.broadcast 'messages',
       message: currWord,
-      user: self.name
+      user: self
   end
 
   private

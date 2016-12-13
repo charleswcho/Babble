@@ -1,9 +1,10 @@
-<h1>Message#index</h1>
-<p>Find me in app/views/message/index.html.erb</p>
-<div id="messages">
-  <% @messages.each do |message| %>
-    <ul>
-      <li><%= message.user.name + ' : ' + message.text %></li>
-    </ul>
-  <% end %>
+<div id="chat-room">
+  <div class="title"><p>Babble Chat</p></div>
+
+  <div class="messages"></div>
+  
+  <div class="chat-interface">
+    <input type="text" name="" value=""><br>
+    <button type="button" name="button">Chat</button>
+  </div>
 </div>

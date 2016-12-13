@@ -1,11 +1,19 @@
 App.messages = App.cable.subscriptions.create('MessagesChannel', {
   received: function(data) {
-    console.log('We got the stuff from the datastream')
-    $("#messages").removeClass('hidden')
-    return $('#messages').append(this.renderMessage(data));
+    var $messages = $(".messages")
+
+    $messages.removeClass('hidden')
+    return $messages.append(this.renderMessage(data));
   },
 
   renderMessage: function(data) {
-    return "<p> <b>" + data.user + ": </b>" + data.message + "</p>";
+    var img = '<img src=' +
+              data.user.profile_pic +
+              "alt='profile pic' height='18' width='18'>"
+
+    var $user = $('<b>' + data.user.name + ' : </b>')
+
+    $user.css('color', data.user.color)
+    return "<p>" + img + $user.prop('outerHTML') + data.message + "</p>";
   }
 });
