@@ -11,9 +11,13 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
               data.user.profile_pic +
               "alt='profile pic' height='18' width='18'>"
 
-    var $user = $('<b>' + data.user.name + ' : </b>')
+    var $name = $('<b>' + data.user.name + '</b>'),
+        nameStr;
 
-    $user.css('color', data.user.color)
-    return "<p>" + img + $user.prop('outerHTML') + data.message + "</p>";
+    $name.css('color', data.user.color)
+
+    nameStr = $name.prop('outerHTML')
+
+    return "<p class='message'>" + img + nameStr + ' : ' + data.message + "</p>";
   }
 });

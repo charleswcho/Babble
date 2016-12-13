@@ -8,6 +8,12 @@ class Censored
     generate
   end
 
+  def censor(sentence)
+    censor = sentence.split.any? { |word| @censoredWords[word] }
+
+    censor ? '&lt;message deleted&gt;' : sentence
+  end
+
   private
 
   def generate
@@ -24,7 +30,5 @@ class Censored
         i += 1
       end
     end
-
-    @censoredWords['Hi'] = true
   end
 end

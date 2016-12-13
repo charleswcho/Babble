@@ -24,7 +24,8 @@ class User < ApplicationRecord
   end
 
   def babble
-    currWord = 'Hi there' # rand_word
+    currWord = Censored.instance.censor(rand_word)
+
     Message.create!(text: currWord, user_id: self.id)
 
     ActionCable.server.broadcast 'messages',
