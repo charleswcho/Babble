@@ -24,27 +24,12 @@ class User < ApplicationRecord
   end
 
   def babble
-    sentence = rand_word
+    message = Message.generate
 
-    (rand(5)).times do |i|
-      # Increasing censoring to normal Twitch levels
-      sentence += ' Hi' if i == rand(5)
-
-      sentence += ' ' + rand_word
-    end
-
-    sentence = Censored.instance.censor(sentence)
-
-    Message.create!(text: sentence, user_id: self.id)
+    Message.create!(text: message, user_id: self.id)
 
     ActionCable.server.broadcast 'messages',
-      message: sentence,
+      message: message,
       user: self
-  end
-
-  private
-
-  def rand_word
-    ('a'..'z').to_a.shuffle[0,8].join
   end
 end
