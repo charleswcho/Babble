@@ -2,9 +2,6 @@
   <div class="title"><p>Babble Chat</p></div>
 
   <div class="messages"></div>
-  
-  <div class="chat-interface">
-    <input type="text" name="" value=""><br>
-    <button type="button" name="button">Chat</button>
-  </div>
+
+  <%= render partial: 'message_form', locals: { message: @message }%>
 </div>
