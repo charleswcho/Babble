@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # hijacking datastream to listen for WebSocket requests
   mount ActionCable.server => '/cable'
 
-  resources :messages, only: [:index, :create]
+  resources :messages, only: [:index, :create, :new]
 
   root 'static_pages#index'
 end

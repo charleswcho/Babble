@@ -1,0 +1,5 @@
+<%= form_for @message, remote: true, authenticity_token: true do |f| %>
+  <%= f.text_area :text, placeholder: "Send a message" %>
+
+  <button class="chat-button" type="submit" name="submit">Chat</button>
+<% end %>

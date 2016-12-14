@@ -2,7 +2,7 @@ class RegistrationsController < Devise::RegistrationsController
   def create
     build_resource(sign_up_params)
 
-    resource[:name] = Faker::Name.first_name
+    resource[:name] = resource.email.split('@').first
     resource[:color] = Faker::Color.color_name
     resource[:profile_pic] = Faker::Avatar.image
 

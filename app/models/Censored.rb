@@ -31,6 +31,6 @@ class Censored
       end
     end
 
-    @censoredWords['Hi'] = true
+    @censoredWords['Kappa'] = true
   end
 end
