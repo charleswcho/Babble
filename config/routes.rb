@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => {registrations: "users/registrations"}
   # hijacking datastream to listen for WebSocket requests
   mount ActionCable.server => '/cable'
 

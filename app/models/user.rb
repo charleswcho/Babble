@@ -7,12 +7,13 @@ class User < ApplicationRecord
   has_many :chat_rooms, dependent: :destroy
   has_many :messages, dependent: :destroy
 
-  def self.createRandUser
-    name = Faker::Name.first_name
-    color = Faker::Color.color_name
-    profile_pic = Faker::Avatar.image
-
-    User.create!(name: name, color: color, profile_pic: profile_pic)
+  def self.createRandUser(i)
+    User.create! name: Faker::Name.first_name,
+                 color: Faker::Color.color_name,
+                 profile_pic: Faker::Avatar.image,
+                 email: 'fake@gmail.com' + i.to_s,
+                 password: '123456',
+                 password_confirmation: '123456'
   end
 
   def name
