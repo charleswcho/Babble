@@ -15,13 +15,14 @@ class Message < ApplicationRecord
   belongs_to :user
 
   def self.generate
-    sentence = rand_word
+    # TODO: Bug introduced when using private method
+    sentence = ('a'..'z').to_a.shuffle[0,8].join
 
     (rand(5)).times do |i|
       # Increasing censoring to normal Twitch levels
       sentence += ' Hi' if i == rand(5)
 
-      sentence += ' ' + rand_word
+      sentence += ' ' + ('a'..'z').to_a.shuffle[0,8].join
     end
 
     Censored.instance.censor(sentence)
