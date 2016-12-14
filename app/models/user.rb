@@ -16,10 +16,6 @@ class User < ApplicationRecord
                  password_confirmation: '123456'
   end
 
-  def name
-    email.split('@').first
-  end
-
   def babble
     message = Message.generate
 

@@ -1,7 +1,7 @@
-class Users::RegistrationsController < Devise::RegistrationsController
+class RegistrationsController < Devise::RegistrationsController
   def create
     build_resource(sign_up_params)
-    byebug
+
     resource[:name] = Faker::Name.first_name
     resource[:color] = Faker::Color.color_name
     resource[:profile_pic] = Faker::Avatar.image
