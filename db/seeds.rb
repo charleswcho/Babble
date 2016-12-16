@@ -19,8 +19,6 @@
 # chat system and my instance is removed, my connection should not break and
 # my experience should not be interrupted. (optional)
 
-require 'byebug'
-
 10_000.times do |i|
   User.createRandUser(i)
 end
