@@ -21,7 +21,7 @@
 
 require 'byebug'
 
-10_000.times do |i|
+2.times do |i|
   User.createRandUser(i)
 end
 

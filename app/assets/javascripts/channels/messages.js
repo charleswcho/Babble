@@ -3,21 +3,21 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
     var $messages = $(".messages")
 
     $messages.removeClass('hidden')
-    return $messages.append(this.renderMessage(data));
+             .append(this.renderMessage(data))
+             .scrollTop($messages[0].scrollHeight)
   },
 
   renderMessage: function(data) {
-    var img = '<img src=' +
-              data.user.profile_pic +
+    var user = data.user,
+        img = '<img src=' + user.profile_pic +
               "alt='profile pic' height='18' width='18'>"
 
-    var $name = $('<b>' + data.user.name + '</b>'),
-        nameStr;
+    var url = './users/' + user.id
+        $name = $('<a href=' + url + '>' + user.name + '</a>'),
+        nameStr = $name.css('color', user.color)
+                       .css('font-weight', 'bold')
+                       .prop('outerHTML') // Convert to string
 
-    $name.css('color', data.user.color)
-
-    nameStr = $name.prop('outerHTML')
-
-    return "<p class='message'>" + img + nameStr + ' : ' + data.message + "</p>";
+    return "<p class='message'>" + img + nameStr + ' : ' + data.message + "</p>"
   }
 });
