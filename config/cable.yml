@@ -1,6 +1,6 @@
 redis: &redis
   adapter: redis
-  url: redis://redistogo:cf64764d1a122f561a3d9ab69d454c0e@sculpin.redistogo.com:9667/
+  url: <%= ENV["REDISCLOUD_URL"] %>
 
 production: *redis
 development: *redis
