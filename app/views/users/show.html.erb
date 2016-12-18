@@ -1,4 +1,15 @@
-<div class="">
-  Hi there
-  <%= @user.name %>
+<div class="profile">
+  <div class="splash">
+    <img src="<%= @user.profile_pic %>">
+    <div class="name"><%= @user.name %></div>
+  </div>
+
+  <div class="info">
+    <div class="chat">
+      <div class="chat-text"></div>
+      <div class="chat-interface">
+        <%= render partial: 'messages/message_form', locals: { message: @message }%>
+      </div>
+    </div>
+  </div>
 </div>
