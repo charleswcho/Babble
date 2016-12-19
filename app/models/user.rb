@@ -41,8 +41,8 @@ class User < ApplicationRecord
     text = Message.generate
 
     # Using obj instead of create! to save db space
-    message = Message.create!(text: text, user_id: self.id)
-    # message = { text: text }
+    # message = Message.create!(text: text, user_id: self.id)
+    message = { text: text }
 
     ActionCable.server.broadcast 'messages',
       message: message,
