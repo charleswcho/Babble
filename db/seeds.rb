@@ -19,7 +19,7 @@
 # chat system and my instance is removed, my connection should not break and
 # my experience should not be interrupted. (optional)
 
-10_000.times do |i|
+2.times do |i|
   User.createRandUser(i)
 end
 

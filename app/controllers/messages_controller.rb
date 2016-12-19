@@ -17,7 +17,7 @@ class MessagesController < ApplicationController
       message.recipient_id = recipient_id
     end
 
-    if message.save
+    if message.valid? # Using valid? to save db space
       ActionCable.server.broadcast 'messages',
         message: message,
         user: message.user
