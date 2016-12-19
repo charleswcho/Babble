@@ -16,10 +16,12 @@ ActiveRecord::Schema.define(version: 20161213234650) do
   enable_extension "plpgsql"
 
   create_table "messages", force: :cascade do |t|
-    t.string   "text",       null: false
-    t.string   "user_id",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "text",         null: false
+    t.string   "recipient_id"
+    t.string   "user_id",      null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["recipient_id"], name: "index_messages_on_recipient_id", using: :btree
     t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
   end
 

@@ -1,10 +1,19 @@
 App.messages = App.cable.subscriptions.create('MessagesChannel', {
   received: function(data) {
-    var $messages = $(".messages")
+    var recipient_id = data.message.recipient_id
 
-    $messages.removeClass('hidden')
-             .append(this.renderMessage(data))
-             .scrollTop($messages[0].scrollHeight)
+    if (recipient_id) {
+      var $chat = $(".chat-text")
+
+      $chat.removeClass('hidden')
+           .append(this.renderMessage(data))
+    } else {
+      var $messages = $(".messages")
+
+      $messages.removeClass('hidden')
+               .append(this.renderMessage(data))
+               .scrollTop($messages[0].scrollHeight)
+    }
   },
 
   renderMessage: function(data) {
@@ -18,6 +27,6 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
                        .css('font-weight', 'bold')
                        .prop('outerHTML') // Convert to string
 
-    return "<p class='message'>" + img + nameStr + ' : ' + data.message + "</p>"
+    return "<p class='message'>" + img + nameStr + ' : ' + data.message.text + "</p>"
   }
 });

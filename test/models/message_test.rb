@@ -2,11 +2,12 @@
 #
 # Table name: messages
 #
-#  id         :integer          not null, primary key
-#  text       :string           not null
-#  user_id    :string           not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id           :integer          not null, primary key
+#  text         :string           not null
+#  recipient_id :string
+#  user_id      :string           not null
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
 #
 
 require 'test_helper'

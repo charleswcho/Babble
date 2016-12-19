@@ -10,10 +10,16 @@ class MessagesController < ApplicationController
     message = Message.new(message_params)
 
     message.user = current_user
-    
+
+    recipient_id = request.referer.split('users/').last.to_i
+
+    if recipient_id != 0
+      message.recipient_id = recipient_id
+    end
+
     if message.save
       ActionCable.server.broadcast 'messages',
-        message: message.text,
+        message: message,
         user: message.user
       head :ok
     end
@@ -22,6 +28,6 @@ class MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:text)
+    params.require(:message).permit(:text, :recipient_id)
   end
 end
