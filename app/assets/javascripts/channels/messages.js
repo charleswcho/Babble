@@ -1,15 +1,11 @@
 App.messages = App.cable.subscriptions.create('MessagesChannel', {
   received: function(data) {
-    var recipient_id = data.message.recipient_id
+    var $chat = $(".chat-text"),
+        $messages = $(".messages")
 
-    if (recipient_id) {
-      var $chat = $(".chat-text")
-
-      $chat.removeClass('hidden')
-           .append(this.renderMessage(data))
-    } else {
-      var $messages = $(".messages")
-
+    if (data.message.recipient_id) {
+      $chat.removeClass('hidden').append(this.renderMessage(data))
+    } else if ($messages) {
       $messages.removeClass('hidden')
                .append(this.renderMessage(data))
                .scrollTop($messages[0].scrollHeight)

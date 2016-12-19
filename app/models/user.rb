@@ -40,8 +40,9 @@ class User < ApplicationRecord
   def babble
     text = Message.generate
 
-    # Using new instead of create! to save db space
-    message = Message.new(text: text, user_id: self.id)
+    # Using obj instead of create! to save db space
+    message = Message.create!(text: text, user_id: self.id)
+    # message = { text: text }
 
     ActionCable.server.broadcast 'messages',
       message: message,
