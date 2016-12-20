@@ -44,7 +44,7 @@ class User < ApplicationRecord
     # message = Message.create!(text: text, user_id: self.id)
     message = { text: text }
 
-    sleep(0.5) # space out broadcasts to prevent overwhelming ActionCable
+    sleep(Random.rand(0.75)) # space out broadcasts to prevent overwhelming ActionCable
 
     ActionCable.server.broadcast 'messages',
       message: message,

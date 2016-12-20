@@ -4,7 +4,9 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
         $messages = $(".messages")
 
     if (data.message.recipient_id) {
-      $chat.removeClass('hidden').append(this.renderMessage(data))
+      $chat.removeClass('hidden')
+           .append(this.renderMessage(data))
+           .scrollTop($chat[0].scrollHeight)
     } else if ($messages) {
       $messages.removeClass('hidden')
                .append(this.renderMessage(data))
