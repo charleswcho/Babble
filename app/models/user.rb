@@ -31,7 +31,7 @@ class User < ApplicationRecord
   def self.createRandUser(i)
     User.create! name: Faker::Name.first_name,
                  color: Faker::Color.color_name,
-                 profile_pic: Faker::Avatar.image,
+                 profile_pic: Faker::Avatar.image(nil, '70x70', 'jpg'),
                  email: 'fake@gmail.com' + i.to_s,
                  password: '123456',
                  password_confirmation: '123456'
