@@ -1,5 +1,7 @@
 # Babble
 
+[Live](https://babble-chat.herokuapp.com)
+
 Inspired by Twitch chat but everything is just babble!
 
 ## Setup
